@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ImFitPlus</string>
+    <string name="mensagem_boas_vindas">Descubra seu perfil de saúde e receba recomendações personalizadas</string>
+    <string name="botao_boas_vindas">Comece Aqui</string>
+    <string name="botao_form">Calcular</string>
+    <string-array name="niveis_atividade">
+        <item>Sedentário</item>
+        <item>Leve</item>
+        <item>Moderado</item>
+        <item>Intenso</item>
+    </string-array>
+</resources>

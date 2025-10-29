@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Nome -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textColor="@color/app_green" />
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Digite seu nome"
+            android:textColor="@color/app_green"
+            app:hintTextColor="@color/app_green" />
+
+        <!-- Idade -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Idade"
+            android:textColor="@color/app_green" />
+        <EditText
+            android:id="@+id/idade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Digite sua idade"
+            android:textColor="@color/app_green"
+            app:hintTextColor="@color/app_green" />
+
+        <!-- Sexo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sexo"
+            android:textColor="@color/app_green" />
+        <RadioGroup
+            android:id="@+id/rgSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbMasculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masculino"
+                android:textColor="@color/app_green" />
+
+            <RadioButton
+                android:id="@+id/rbFeminino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feminino"
+                android:textColor="@color/app_green" />
+        </RadioGroup>
+
+        <!-- Altura -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Altura (cm)"
+            android:textColor="@color/app_green" />
+        <EditText
+            android:id="@+id/altura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Digite sua altura"
+            android:textColor="@color/app_green"
+            app:hintTextColor="@color/app_green" />
+
+        <!-- Peso -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peso (kg)"
+            android:textColor="@color/app_green" />
+        <EditText
+            android:id="@+id/peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Digite seu peso"
+            android:textColor="@color/app_green"
+            app:hintTextColor="@color/app_green" />
+
+        <!-- Nível de Atividade -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nível de Atividade"
+            android:textColor="@color/app_green" />
+        <Spinner
+            android:id="@+id/nivelAtividade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/niveis_atividade"/>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/botao_enviar_formulario"
+            android:layout_gravity="center"
+            android:backgroundTint="#006600"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/botao_form"/>
+    </LinearLayout>
+</ScrollView>
