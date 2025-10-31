@@ -11,6 +11,9 @@
     <string name="resultado_do_imc">Resultado do IMC</string>
     <string name="categoria_imc">Normal</string>
     <string name="categoria_text">Categoria:</string>
+    <string name="tmb_label">TMB:</string>
+    <string name="gasto_total_label">Gasto Total:</string>
+    <string name="calcular_peso_ideal">Calcular Peso Ideal</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

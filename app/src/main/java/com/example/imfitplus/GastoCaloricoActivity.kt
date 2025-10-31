@@ -25,11 +25,8 @@ class GastoCaloricoActivity : AppCompatActivity() {
             val tmb = calculaTmb(pessoa)
             val gastoDiario = tmb * fatorAtividade(pessoa.nivelAtividade)
 
-            agcb.textTmb.text = """
-            Nome: ${pessoa.nome}
-            TMB: ${"%.2f".format(tmb)} kcal/dia
-            Gasto Calórico Diário: ${"%.2f".format(gastoDiario)} kcal/dia
-        """.trimIndent()
+            agcb.nomeGasto.text = pessoa.nome
+            agcb.textTmbValor.text = "%.2f".format(calculaTmb(pessoa))
         }
 
         // Botão para próxima tela (Peso Ideal)
