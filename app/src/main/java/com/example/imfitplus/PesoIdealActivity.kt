@@ -18,9 +18,11 @@ class PesoIdealActivity : AppCompatActivity() {
         pia = ActivityPesoIdealBinding.inflate(layoutInflater)
         setContentView(pia.root)
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
+        val pesoIdeal = calculaPesoIdeal(pessoa!!.altura)
 
-        pia.pesoAtualValor.text = pessoa!!.peso.toString()
-        pia.pesoIdealValor.text = "%.2f".format(calculaPesoIdeal(pessoa.altura))
+        pia.pesoAtualValor.text = pessoa.peso.toString()
+        pia.pesoIdealValor.text = "%.2f".format(pesoIdeal)
+        pia.diferencaPesos.text = "%.2f".format(pesoIdeal - pessoa.peso)
 
         pia.btnVoltar.setOnClickListener { finish() }
     }
