@@ -28,6 +28,9 @@
     <string name="n_vel_de_atividade">Nível de Atividade</string>
     <string name="logo_do_app">logo do app</string>
     <string name="diferenca_pesos_texto">Diferença entre peso ideal e atual: </string>
+    <string name="resumo_da_saude">Resumo da Saúde</string>
+    <string name="nome_resumo">Nome:</string>
+    <string name="imc_resumo">Imc:</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

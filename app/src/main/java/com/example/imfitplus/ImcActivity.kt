@@ -28,13 +28,13 @@ class ImcActivity : AppCompatActivity() {
             // Exibe nome, IMC e categoria
             aib.textImcValor.text = "%.2f".format(imc)
             aib.textCategoriaValor.text = categoria
-        }
 
-        // Botão para próxima tela (Gasto Calórico)
-        aib.btnCalcularGasto.setOnClickListener {
-            val intent = Intent(this, GastoCaloricoActivity::class.java)
-            intent.putExtra("Pessoa", pessoa)
-            startActivity(intent)
+            aib.btnCalcularGasto.setOnClickListener {
+                val intent = Intent(this, GastoCaloricoActivity::class.java)
+                intent.putExtra("Pessoa", pessoa)
+                intent.putExtra("imc", imc)
+                startActivity(intent)
+            }
         }
 
         // Botão para voltar

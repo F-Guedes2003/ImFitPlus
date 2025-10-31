@@ -1,5 +1,6 @@
 package com.example.imfitplus
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,10 @@ class PesoIdealActivity : AppCompatActivity() {
         pia = ActivityPesoIdealBinding.inflate(layoutInflater)
         setContentView(pia.root)
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
+        val imc = intent.getDoubleExtra("imc", 0.0)
+        val tmb = intent.getDoubleExtra("tmb", 0.0)
+        val gastoDiario = intent.getDoubleExtra("gastoDiario", 0.0)
+
         val pesoIdeal = calculaPesoIdeal(pessoa!!.altura)
 
         pia.pesoAtualValor.text = pessoa.peso.toString()
@@ -25,6 +30,16 @@ class PesoIdealActivity : AppCompatActivity() {
         pia.diferencaPesos.text = "%.2f".format(pesoIdeal - pessoa.peso)
 
         pia.btnVoltar.setOnClickListener { finish() }
+        pia.btnAvancarParaResumo.setOnClickListener {
+            val intent = Intent(this, ResumoSaudeActivity::class.java)
+            intent.putExtra("pessoa", pessoa)
+            intent.putExtra("imc", imc)
+            intent.putExtra("tmb", tmb)
+            intent.putExtra("gastoDiario", gastoDiario)
+            intent.putExtra("pesoIdeal", pesoIdeal)
+
+            startActivity(intent)
+        }
     }
 
     private fun calculaPesoIdeal(altura: Double): Double {
