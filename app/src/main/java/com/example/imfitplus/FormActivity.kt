@@ -3,19 +3,17 @@ package com.example.imfitplus
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityFormBinding
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
 
 class FormActivity : AppCompatActivity() {
-    lateinit var afb: ActivityFormBinding
+    private lateinit var afb: ActivityFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,81 +26,88 @@ class FormActivity : AppCompatActivity() {
     private fun enviar() {
         val nome = afb.nome
         val idade = afb.idade
-        val nivelAtividade = selectNivelAtividade()
         val altura = afb.altura
         val peso = afb.peso
 
-        if (nome.text == null) {
-            Toast.makeText(afb.root.context, "Campo nome deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
+        limparErros(nome, idade, altura, peso)
 
-            nome.background.setTint(Color.RED)
+        if (!validarCampoObrigatorio(nome, "Nome")) return
+        if (!validarCampoObrigatorio(idade, "Idade")) return
+        if (!validarCampoObrigatorio(altura, "Altura")) return
+        if (!validarCampoObrigatorio(peso, "Peso")) return
 
+        val idadeInt = idade.text.toString().toIntOrNull()
+        val alturaDouble = altura.text.toString().toDoubleOrNull()
+        val pesoDouble = peso.text.toString().toDoubleOrNull()
+
+        if (idadeInt == null || idadeInt <= 0) {
+            exibirErro(idade, "Idade inválida")
             return
         }
 
-        if (idade.text == null) {
-            Toast.makeText(afb.root.context, "Campo idade deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
-
-            idade.background.setTint(Color.RED)
-
+        if (alturaDouble == null || alturaDouble <= 0) {
+            exibirErro(altura, "Altura inválida")
             return
         }
 
-        if (selectSexo() == null) {
-            Toast.makeText(afb.root.context, "Campo sexo deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
-
+        if (pesoDouble == null || pesoDouble <= 0) {
+            exibirErro(peso, "Peso inválido")
             return
         }
 
-        if (selectNivelAtividade() == null) {
-            Toast.makeText(afb.root.context, "Campo nivel de atividade deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
-
+        val sexo = selectSexo()
+        if (sexo == null) {
+            Toast.makeText(this, "Selecione o sexo", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (altura.text == null) {
-            Toast.makeText(afb.root.context, "Campo altura deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
-
-            altura.background.setTint(Color.RED)
-
+        val nivelAtividade = selectNivelAtividade()
+        if (nivelAtividade == null) {
+            Toast.makeText(this, "Selecione o nível de atividade", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (peso.text == null) {
-            Toast.makeText(afb.root.context, "Campo peso deve ser preenchido", Toast.LENGTH_LONG)
-                .show()
-
-            peso.background.setTint(Color.RED)
-
-            return
+        val intent = Intent(this, ImcActivity::class.java).apply {
+            putExtra(
+                "Pessoa",
+                Pessoa(
+                    nome.text.toString(),
+                    idadeInt,
+                    sexo,
+                    nivelAtividade,
+                    alturaDouble,
+                    pesoDouble
+                )
+            )
         }
+        startActivity(intent)
+    }
 
-        val intent = Intent(this, ImcActivity::class.java)
-        intent.putExtra("Pessoa", Pessoa(
-            nome.text.toString(),
-            idade.text.toString().toInt(),
-            selectSexo()!!,
-            nivelAtividade!!,
-            altura.text.toString().toDouble(),
-            peso.text.toString().toDouble()
-        ))
-        startActivity(intent);
+    private fun validarCampoObrigatorio(campo: EditText, nomeCampo: String): Boolean {
+        if (campo.text.toString().trim().isEmpty()) {
+            exibirErro(campo, "Campo $nomeCampo deve ser preenchido")
+            return false
+        }
+        return true
+    }
+
+    private fun exibirErro(campo: EditText, mensagem: String) {
+        campo.background.setTint(Color.RED)
+        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun limparErros(vararg campos: EditText) {
+        campos.forEach { campo -> campo.background.setTint(Color.GRAY) }
     }
 
     private fun selectSexo(): Sexo? {
         val selectedRadioButtonId = afb.rgSexo.checkedRadioButtonId
-
         if (selectedRadioButtonId == -1) return null
 
-        return when (afb.root.findViewById<RadioButton>(selectedRadioButtonId).text) {
-                "Masculino" -> Sexo.MASCULINO
-                "Feminino" -> Sexo.FEMININO
-                else -> null
+        return when (findViewById<RadioButton>(selectedRadioButtonId).text.toString()) {
+            "Masculino" -> Sexo.MASCULINO
+            "Feminino" -> Sexo.FEMININO
+            else -> null
         }
     }
 
