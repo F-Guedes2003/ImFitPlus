@@ -7,6 +7,10 @@
     <string name="peso_atual_texto">peso atual: </string>
     <string name="peso_atual_valor">\n</string>
     <string name="peso_ideal">Peso ideal:</string>
+    <string name="calcular_gasto_calorico">Calcular Gasto Calórico</string>
+    <string name="resultado_do_imc">Resultado do IMC</string>
+    <string name="categoria_imc">Normal</string>
+    <string name="categoria_text">Categoria:</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

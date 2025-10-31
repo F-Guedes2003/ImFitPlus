@@ -26,11 +26,8 @@ class ImcActivity : AppCompatActivity() {
             val categoria = classificaIMC(imc)
 
             // Exibe nome, IMC e categoria
-            aib.textImc.text = """
-            Nome: ${pessoa.nome}
-            IMC: ${"%.2f".format(imc)}
-            Categoria: $categoria
-        """.trimIndent()
+            aib.textImcValor.text = "%.2f".format(imc)
+            aib.textCategoriaValor.text = "%.2f".format(categoria)
         }
 
         // Botão para próxima tela (Gasto Calórico)
