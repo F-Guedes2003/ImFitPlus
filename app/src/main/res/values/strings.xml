@@ -26,6 +26,7 @@
     <string name="peso_kg">Peso (kg)</string>
     <string name="digite_seu_peso">Digite seu peso</string>
     <string name="n_vel_de_atividade">Nível de Atividade</string>
+    <string name="logo_do_app">logo do app</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
