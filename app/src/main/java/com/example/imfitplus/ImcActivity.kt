@@ -27,7 +27,7 @@ class ImcActivity : AppCompatActivity() {
 
             // Exibe nome, IMC e categoria
             aib.textImcValor.text = "%.2f".format(imc)
-            aib.textCategoriaValor.text = "%.2f".format(categoria)
+            aib.textCategoriaValor.text = categoria
         }
 
         // Botão para próxima tela (Gasto Calórico)
