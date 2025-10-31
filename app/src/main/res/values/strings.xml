@@ -3,6 +3,10 @@
     <string name="mensagem_boas_vindas">Descubra seu perfil de saúde e receba recomendações personalizadas</string>
     <string name="botao_boas_vindas">Comece Aqui</string>
     <string name="botao_form">Calcular</string>
+    <string name="voltar">voltar</string>
+    <string name="peso_atual_texto">peso atual: </string>
+    <string name="peso_atual_valor">\n</string>
+    <string name="peso_ideal">Peso ideal:</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

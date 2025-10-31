@@ -5,16 +5,27 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.imfitplus.databinding.ActivityPesoIdealBinding
+import com.example.imfitplus.entities.Pessoa
+import kotlin.math.abs
+import kotlin.math.pow
 
 class PesoIdealActivity : AppCompatActivity() {
+    private lateinit var pia: ActivityPesoIdealBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_peso_ideal)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        pia = ActivityPesoIdealBinding.inflate(layoutInflater)
+        setContentView(pia.root)
+        val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
+
+        pia.pesoAtualValor.text = pessoa!!.peso.toString()
+        pia.pesoIdealValor.text = "%.2f".format(calculaPesoIdeal(pessoa.altura))
+
+        pia.btnVoltar.setOnClickListener { finish() }
+    }
+
+    private fun calculaPesoIdeal(altura: Double): Double {
+        return 22 * altura.pow(2)
     }
 }
