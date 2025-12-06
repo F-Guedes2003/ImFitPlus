@@ -20,6 +20,7 @@ class PesoIdealActivity : AppCompatActivity() {
         setContentView(pia.root)
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
         val imc = intent.getDoubleExtra("imc", 0.0)
+        println("Valor do imc no peso ideal: " + imc)
         val tmb = intent.getDoubleExtra("tmb", 0.0)
         val gastoDiario = intent.getDoubleExtra("gastoDiario", 0.0)
 

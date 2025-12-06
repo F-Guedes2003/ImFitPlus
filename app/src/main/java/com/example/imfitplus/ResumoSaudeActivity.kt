@@ -18,11 +18,11 @@ class ResumoSaudeActivity : AppCompatActivity() {
         setContentView(arsb.root)
 
         val imc = intent.getDoubleExtra("imc", 0.0)
+        println("valor do imc: " + imc)
         val tmb = intent.getDoubleExtra("tmb", 0.0)
         val gastoDiario = intent.getDoubleExtra("gastoDiario", 0.0)
         val pesoIdeal = intent.getDoubleExtra("pesoIdeal", 0.0)
         val pessoa = intent.getParcelableExtra<Pessoa>("pessoa")
-
         arsb.valorImc.text = "%.2f".format(imc)
     }
 }

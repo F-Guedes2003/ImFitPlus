@@ -28,6 +28,8 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
             agcb.nomeGasto.text = pessoa.nome
             agcb.textTmbValor.text = "%.2f".format(calculaTmb(pessoa))
+            println("imc no gasto calórico")
+
             agcb.btnCalcularPesoIdeal.setOnClickListener {
                 val intent = Intent(this, PesoIdealActivity::class.java)
                 intent.putExtra("Pessoa", pessoa)
@@ -36,13 +38,6 @@ class GastoCaloricoActivity : AppCompatActivity() {
                 intent.putExtra("gastoDiario", gastoDiario)
                 startActivity(intent)
             }
-        }
-
-        // Botão para próxima tela (Peso Ideal)
-        agcb.btnCalcularPesoIdeal.setOnClickListener {
-            val intent = Intent(this, PesoIdealActivity::class.java)
-            intent.putExtra("Pessoa", pessoa)
-            startActivity(intent)
         }
 
         // Botão para voltar
