@@ -33,6 +33,7 @@
     <string name="imc_resumo">Imc:</string>
     <string name="imc">imc:</string>
     <string name="imc_toolbar">IMC</string>
+    <string name="gasto_calorico_toolbar">Gasto Calórico</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
