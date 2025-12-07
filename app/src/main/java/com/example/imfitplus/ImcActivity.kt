@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityImcBinding
+import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import kotlin.math.pow
 
@@ -31,8 +32,9 @@ class ImcActivity : AppCompatActivity() {
 
             aib.btnCalcularGasto.setOnClickListener {
                 val intent = Intent(this, GastoCaloricoActivity::class.java)
+                val dadosSaude = DadosSaude(imc, 0.0, 0.0, 0.0);
                 intent.putExtra("Pessoa", pessoa)
-                intent.putExtra("imc", imc)
+                intent.putExtra("DadosSaude", dadosSaude)
                 startActivity(intent)
             }
         }

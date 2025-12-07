@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityGastoCaloricoBinding
+import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
@@ -20,22 +21,21 @@ class GastoCaloricoActivity : AppCompatActivity() {
         setContentView(agcb.root)
 
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
-        val imc = intent.getDoubleExtra("imc", 0.0)
+        val dadosSaude = intent.getParcelableExtra<DadosSaude>("DadosSaude")
 
         if (pessoa != null) {
             val tmb = calculaTmb(pessoa)
             val gastoDiario = tmb * fatorAtividade(pessoa.nivelAtividade)
+            dadosSaude?.taxaMetabolica = tmb
+            dadosSaude?.gastoDiario = gastoDiario
 
             agcb.nomeGasto.text = pessoa.nome
             agcb.textTmbValor.text = "%.2f".format(calculaTmb(pessoa))
-            println("imc no gasto calórico")
 
             agcb.btnCalcularPesoIdeal.setOnClickListener {
                 val intent = Intent(this, PesoIdealActivity::class.java)
                 intent.putExtra("Pessoa", pessoa)
-                intent.putExtra("imc", imc)
-                intent.putExtra("tmb", tmb)
-                intent.putExtra("gastoDiario", gastoDiario)
+                intent.putExtra("DadosSaude", dadosSaude)
                 startActivity(intent)
             }
         }

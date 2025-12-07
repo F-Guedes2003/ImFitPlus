@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityPesoIdealBinding
+import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import kotlin.math.abs
 import kotlin.math.pow
@@ -19,12 +20,10 @@ class PesoIdealActivity : AppCompatActivity() {
         pia = ActivityPesoIdealBinding.inflate(layoutInflater)
         setContentView(pia.root)
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
-        val imc = intent.getDoubleExtra("imc", 0.0)
-        println("Valor do imc no peso ideal: " + imc)
-        val tmb = intent.getDoubleExtra("tmb", 0.0)
-        val gastoDiario = intent.getDoubleExtra("gastoDiario", 0.0)
+        val dadosSaude = intent.getParcelableExtra<DadosSaude>("DadosSaude")
 
         val pesoIdeal = calculaPesoIdeal(pessoa!!.altura)
+        dadosSaude!!.pesoIdeal = pesoIdeal
 
         pia.pesoAtualValor.text = pessoa.peso.toString()
         pia.pesoIdealValor.text = "%.2f".format(pesoIdeal)
@@ -34,10 +33,7 @@ class PesoIdealActivity : AppCompatActivity() {
         pia.btnAvancarParaResumo.setOnClickListener {
             val intent = Intent(this, ResumoSaudeActivity::class.java)
             intent.putExtra("pessoa", pessoa)
-            intent.putExtra("imc", imc)
-            intent.putExtra("tmb", tmb)
-            intent.putExtra("gastoDiario", gastoDiario)
-            intent.putExtra("pesoIdeal", pesoIdeal)
+            intent.putExtra("DadosSaude", dadosSaude)
 
             startActivity(intent)
         }
