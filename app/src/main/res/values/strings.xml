@@ -34,6 +34,7 @@
     <string name="imc">imc:</string>
     <string name="imc_toolbar">IMC</string>
     <string name="gasto_calorico_toolbar">Gasto Calórico</string>
+    <string name="peso_ideal_toolbar">Peso Ideal</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
