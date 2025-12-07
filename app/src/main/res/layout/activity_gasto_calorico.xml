@@ -87,12 +87,16 @@
 
         <Button
             android:id="@+id/btn_voltar_tmb"
+            android:backgroundTint="@color/app_green"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/voltar" />
 
         <Button
             android:id="@+id/btn_calcular_peso_ideal"
+            android:backgroundTint="@color/app_green"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calcular_peso_ideal"
