@@ -32,6 +32,7 @@
     <string name="nome_resumo">Nome:</string>
     <string name="imc_resumo">Imc:</string>
     <string name="imc">imc:</string>
+    <string name="imc_toolbar">IMC</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
