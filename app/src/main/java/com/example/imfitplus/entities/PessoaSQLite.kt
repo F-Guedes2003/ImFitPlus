@@ -8,7 +8,7 @@ import android.util.Log
 import java.sql.SQLException
 import kotlin.apply
 
-class DadosSaudeSQLite(context: Context): DadosSaudeDAO {
+class PessoaSQLite(context: Context): PessoaDAO {
     companion object {
         private val DADOS_SAUDE_FILE = "dadosSaudeList"
         private val DADOS_SAUDE_TABLE = "dados_saude"
