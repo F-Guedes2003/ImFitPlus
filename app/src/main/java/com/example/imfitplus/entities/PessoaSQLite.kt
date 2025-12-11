@@ -47,7 +47,7 @@ class PessoaSQLite(context: Context): PessoaDAO {
     }
 
     // Criando uma instância do sqlite
-    private val database = SQLiteDatabase.openOrCreateDatabase(
+    private val database = context.openOrCreateDatabase(
         DADOS_SAUDE_FILE,
         MODE_PRIVATE,
         null
