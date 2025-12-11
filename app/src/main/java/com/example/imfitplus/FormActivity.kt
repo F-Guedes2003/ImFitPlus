@@ -80,23 +80,25 @@ class FormActivity : AppCompatActivity() {
         val gastoDiario = taxaMetabolica * fatorAtividade(nivelAtividade)
         val pesoIdeal = calculaPesoIdeal(alturaDouble)
 
+        val pessoa = Pessoa(
+            nome.text.toString(),
+            idadeInt,
+            sexo,
+            nivelAtividade,
+            alturaDouble,
+            pesoDouble,
+            imc,
+            taxaMetabolica,
+            gastoDiario,
+            pesoIdeal
+        )
+
+        formController.create(pessoa)
+
         val intent = Intent(this, ImcActivity::class.java).apply {
-            putExtra(
-                "Pessoa",
-                Pessoa(
-                    nome.text.toString(),
-                    idadeInt,
-                    sexo,
-                    nivelAtividade,
-                    alturaDouble,
-                    pesoDouble,
-                    imc,
-                    taxaMetabolica,
-                    gastoDiario,
-                    pesoIdeal
-                )
-            )
+            putExtra("Pessoa", pessoa)
         }
+
         startActivity(intent)
     }
 

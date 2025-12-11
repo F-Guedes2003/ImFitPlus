@@ -1,7 +1,7 @@
 package com.example.imfitplus.entities
 
 interface DadosSaudeDAO {
-    fun create(dado: DadosSaude): Long
+    fun create(dado: Pessoa): Long
 
-    fun getAllDados(): List<DadosSaude>
+    fun getAllDados(): List<Pessoa>
 }
