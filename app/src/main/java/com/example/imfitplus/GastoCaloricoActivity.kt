@@ -21,44 +21,22 @@ class GastoCaloricoActivity : AppCompatActivity() {
         setContentView(agcb.root)
 
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
-        val dadosSaude = intent.getParcelableExtra<DadosSaude>("DadosSaude")
 
         if (pessoa != null) {
-            val tmb = calculaTmb(pessoa)
-            val gastoDiario = tmb * fatorAtividade(pessoa.nivelAtividade)
-            dadosSaude?.taxaMetabolica = tmb
-            dadosSaude?.gastoDiario = gastoDiario
+            val tmb = pessoa.taxaMetabolica
 
             agcb.nomeGasto.text = pessoa.nome
-            agcb.textTmbValor.text = "%.2f".format(calculaTmb(pessoa))
+            agcb.textTmbValor.text = "%.2f".format(tmb)
 
             agcb.btnCalcularPesoIdeal.setOnClickListener {
                 val intent = Intent(this, PesoIdealActivity::class.java)
                 intent.putExtra("Pessoa", pessoa)
-                intent.putExtra("DadosSaude", dadosSaude)
                 startActivity(intent)
             }
         }
 
-        // Botão para voltar
         agcb.btnVoltarTmb.setOnClickListener {
             finish()
-        }
-    }
-
-    private fun calculaTmb(pessoa: Pessoa): Double {
-        return when (pessoa.sexo) {
-            Sexo.MASCULINO -> 66 + (13.7 * pessoa.peso) + (5 * pessoa.altura * 100) - (6.8 * pessoa.idade)
-            Sexo.FEMININO -> 655 + (9.6 * pessoa.peso) + (1.8 * pessoa.altura * 100) - (4.7 * pessoa.idade)
-        }
-    }
-
-    private fun fatorAtividade(nivel: NivelAtividade): Double {
-        return when (nivel) {
-            NivelAtividade.SEDENTARIO -> 1.2
-            NivelAtividade.LEVE -> 1.375
-            NivelAtividade.MODERADO -> 1.55
-            NivelAtividade.INTENSO -> 1.725
         }
     }
 

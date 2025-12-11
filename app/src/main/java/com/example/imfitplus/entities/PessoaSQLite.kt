@@ -17,6 +17,8 @@ class PessoaSQLite(context: Context): PessoaDAO {
 
         private val NOME_COLUMN = "nome"
 
+        private val IDADE_COLUMN  = "idade"
+
         private val PESO_COLUMN = "peso"
 
         private val ALTURA_COLUMN = "altura"
@@ -36,10 +38,11 @@ class PessoaSQLite(context: Context): PessoaDAO {
         private val CREATE_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $DADOS_SAUDE_TABLE (" +
                 "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "$NOME_COLUMN TEXT NOT NULL," +
+                "$IDADE_COLUMN INTEGER NOT NULL," +
                 "$PESO_COLUMN REAL NOT NULL," +
                 "$ALTURA_COLUMN REAL NOT NULL," +
                 "$SEXO_COLUMN TEXT NOT NULL," +
-                "$NIVEL_ATIVIDADE TEXT NOT NULL" +
+                "$NIVEL_ATIVIDADE TEXT NOT NULL," +
                 "$IMC_COLUMN REAL NOT NULL," +
                 "$TMB_COLUMN REAL NOT NULL," +
                 "$GASTO_DIARIO_COLUMN REAL NOT NULL," +
@@ -74,6 +77,7 @@ class PessoaSQLite(context: Context): PessoaDAO {
 
     private fun Pessoa.toContentValues() = ContentValues().apply {
         put(NOME_COLUMN, nome)
+        put(IDADE_COLUMN, idade)
         put(PESO_COLUMN, peso)
         put(ALTURA_COLUMN, altura)
         put(SEXO_COLUMN, sexo.toString())

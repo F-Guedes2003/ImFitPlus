@@ -19,11 +19,9 @@ class PesoIdealActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         pia = ActivityPesoIdealBinding.inflate(layoutInflater)
         setContentView(pia.root)
-        val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
-        val dadosSaude = intent.getParcelableExtra<DadosSaude>("DadosSaude")
 
-        val pesoIdeal = calculaPesoIdeal(pessoa!!.altura)
-        dadosSaude!!.pesoIdeal = pesoIdeal
+        val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
+        val pesoIdeal = pessoa!!.pesoIdeal
 
         pia.pesoAtualValor.text = pessoa.peso.toString()
         pia.pesoIdealValor.text = "%.2f".format(pesoIdeal)
@@ -33,13 +31,7 @@ class PesoIdealActivity : AppCompatActivity() {
         pia.btnAvancarParaResumo.setOnClickListener {
             val intent = Intent(this, ResumoSaudeActivity::class.java)
             intent.putExtra("pessoa", pessoa)
-            intent.putExtra("DadosSaude", dadosSaude)
-
             startActivity(intent)
         }
-    }
-
-    private fun calculaPesoIdeal(altura: Double): Double {
-        return 22 * altura.pow(2)
     }
 }

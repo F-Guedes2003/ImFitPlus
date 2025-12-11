@@ -23,32 +23,23 @@ class ImcActivity : AppCompatActivity() {
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
 
         if (pessoa != null) {
-            val imc = calculaIMC(pessoa)
+            val imc = pessoa.imc
             val categoria = classificaIMC(imc)
 
-            // Exibe nome, IMC e categoria
             aib.textImcValor.text = "%.2f".format(imc)
             aib.textCategoriaValor.text = categoria
 
             aib.btnCalcularGasto.setOnClickListener {
                 val intent = Intent(this, GastoCaloricoActivity::class.java)
-                val dadosSaude = DadosSaude(imc, 0.0, 0.0, 0.0);
                 intent.putExtra("Pessoa", pessoa)
-                intent.putExtra("DadosSaude", dadosSaude)
                 startActivity(intent)
             }
         }
 
-        // Botão para voltar
         aib.btnVoltar.setOnClickListener {
             finish()
         }
     }
-
-    private fun calculaIMC(pessoa: Pessoa): Double {
-        return pessoa.peso / (pessoa.altura.pow(2))
-    }
-
     private fun classificaIMC(imc: Double): String {
         return when {
             imc < 18.5 -> "Abaixo do peso"

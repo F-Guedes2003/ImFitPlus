@@ -18,9 +18,9 @@ class ResumoSaudeActivity : AppCompatActivity() {
         arsb = ActivityResumoSaudeBinding.inflate(layoutInflater)
         setContentView(arsb.root)
 
-        val dadosSaude = intent.getParcelableExtra<DadosSaude>("DadosSaude")
-        arsb.valorImc.text = "%.2f".format(dadosSaude!!.imc)
-        arsb.valorPesoIdeal.text = "%.2f".format(dadosSaude!!.pesoIdeal)
-        arsb.tmbValor.text = "%.2f".format(dadosSaude!!.taxaMetabolica)
+        val pessoa = intent.getParcelableExtra<DadosSaude>("DadosSaude")
+        arsb.valorImc.text = "%.2f".format(pessoa!!.imc)
+        arsb.valorPesoIdeal.text = "%.2f".format(pessoa.pesoIdeal)
+        arsb.tmbValor.text = "%.2f".format(pessoa.taxaMetabolica)
     }
 }
