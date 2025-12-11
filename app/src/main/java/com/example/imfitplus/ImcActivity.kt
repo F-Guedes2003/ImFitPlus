@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityImcBinding
-import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import kotlin.math.pow
 

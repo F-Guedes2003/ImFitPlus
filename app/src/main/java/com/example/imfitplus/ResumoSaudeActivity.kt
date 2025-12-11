@@ -7,7 +7,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityFormBinding
 import com.example.imfitplus.databinding.ActivityResumoSaudeBinding
-import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 
 class ResumoSaudeActivity : AppCompatActivity() {

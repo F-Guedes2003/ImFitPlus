@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityGastoCaloricoBinding
-import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
