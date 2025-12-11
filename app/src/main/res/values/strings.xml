@@ -36,6 +36,9 @@
     <string name="gasto_calorico_toolbar">Gasto Calórico</string>
     <string name="peso_ideal_toolbar">Peso Ideal</string>
     <string name="resumo_toolbar">Resumo</string>
+    <string name="botao_calcular_menu">Calcular novo dado</string>
+    <string name="botao_historico_menu">Histórico</string>
+    <string name="menu">Menu</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

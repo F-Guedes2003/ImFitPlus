@@ -15,6 +15,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/app_green">
 
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Menu"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
