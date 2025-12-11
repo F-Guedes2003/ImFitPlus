@@ -14,6 +14,7 @@ import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
+import kotlin.math.pow
 
 class FormActivity : AppCompatActivity() {
     private lateinit var afb: ActivityFormBinding
@@ -74,6 +75,11 @@ class FormActivity : AppCompatActivity() {
             return
         }
 
+        val imc = calculaImc(pesoDouble, alturaDouble)
+        val taxaMetabolica = calculaTmb(sexo, alturaDouble, pesoDouble, idadeInt)
+        val gastoDiario = taxaMetabolica * fatorAtividade(nivelAtividade)
+        val pesoIdeal = calculaPesoIdeal(alturaDouble)
+
         val intent = Intent(this, ImcActivity::class.java).apply {
             putExtra(
                 "Pessoa",
@@ -83,7 +89,11 @@ class FormActivity : AppCompatActivity() {
                     sexo,
                     nivelAtividade,
                     alturaDouble,
-                    pesoDouble
+                    pesoDouble,
+                    imc,
+                    taxaMetabolica,
+                    gastoDiario,
+                    pesoIdeal
                 )
             )
         }
@@ -126,5 +136,29 @@ class FormActivity : AppCompatActivity() {
             "Intenso" -> NivelAtividade.INTENSO
             else -> null
         }
+    }
+
+    private fun calculaImc(peso: Double, altura: Double): Double {
+        return peso / (altura.pow(2))
+    }
+
+    private fun calculaTmb(sexo: Sexo, altura: Double, peso: Double, idade: Int): Double {
+        return when (sexo) {
+            Sexo.MASCULINO -> 66 + (13.7 * peso) + (5 * altura * 100) - (6.8 * idade)
+            Sexo.FEMININO -> 655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade)
+        }
+    }
+
+    private fun fatorAtividade(nivel: NivelAtividade): Double {
+        return when (nivel) {
+            NivelAtividade.SEDENTARIO -> 1.2
+            NivelAtividade.LEVE -> 1.375
+            NivelAtividade.MODERADO -> 1.55
+            NivelAtividade.INTENSO -> 1.725
+        }
+    }
+
+    private fun calculaPesoIdeal(altura: Double): Double {
+        return 22 * altura.pow(2)
     }
 }
