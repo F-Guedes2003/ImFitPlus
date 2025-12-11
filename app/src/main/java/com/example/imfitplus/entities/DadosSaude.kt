@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DadosSaude(
+    var nome: String,
     var imc: Double,
     var taxaMetabolica: Double,
     var gastoDiario: Double,

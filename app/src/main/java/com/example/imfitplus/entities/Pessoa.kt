@@ -12,5 +12,9 @@ data class Pessoa(
     val sexo: Sexo,
     val nivelAtividade: NivelAtividade,
     val altura: Double,
-    val peso: Double
+    val peso: Double,
+    var imc: Double,
+    var taxaMetabolica: Double,
+    var gastoDiario: Double,
+    var pesoIdeal: Double
     ): Parcelable

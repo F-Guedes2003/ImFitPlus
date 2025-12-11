@@ -7,13 +7,20 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.imfitplus.controller.FormController
+import com.example.imfitplus.controller.MainController
 import com.example.imfitplus.databinding.ActivityFormBinding
+import com.example.imfitplus.entities.DadosSaude
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
 
 class FormActivity : AppCompatActivity() {
     private lateinit var afb: ActivityFormBinding
+
+    private val formController: FormController by lazy {
+        FormController(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
