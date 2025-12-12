@@ -83,6 +83,21 @@ class PessoaSQLite(context: Context): PessoaDAO {
         return pessoaList
     }
 
+    override fun deleteDado(id: Long): Int {
+        return database.delete(DADOS_SAUDE_TABLE,
+            "$id = ?",
+            arrayOf(id.toString()))
+    }
+
+    override fun updatePessoa(id: Long, pessoa: Pessoa): Int {
+        return database.update(
+            DADOS_SAUDE_TABLE,
+            pessoa.toContentValues(),
+            "$id = ?",
+            arrayOf(id.toString())
+        )
+    }
+
     private fun Pessoa.toContentValues() = ContentValues().apply {
         put(NOME_COLUMN, nome)
         put(IDADE_COLUMN, idade)

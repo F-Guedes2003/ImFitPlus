@@ -2,6 +2,7 @@ package com.example.imfitplus
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imfitplus.adapter.PessoaAdapter
 import com.example.imfitplus.controller.MainController
@@ -33,6 +34,13 @@ class HistoricoActivity : AppCompatActivity() {
 
         val adapter = PessoaAdapter(this, lista)
         binding.myListView.adapter = adapter
+
+        binding.myListView.setOnItemClickListener { parent, view, position, id ->
+            val pessoa = lista[position]
+            var intent = Intent(this, DetalhesActivity::class.java)
+            intent.putExtra("Pessoa", pessoa)
+            startActivity(intent)
+        }
     }
 
     private fun inicializaBotaoMenu(activity: ActivityHistoricoBinding) {
