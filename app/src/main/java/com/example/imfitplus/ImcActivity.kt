@@ -53,7 +53,7 @@ class ImcActivity : AppCompatActivity() {
 
     private fun inicializaBotaoMenu(activity: ActivityImcBinding) {
         activity.menuBtn.setOnClickListener {
-            intent = Intent(this, HistoricoActivity::class.java)
+            intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

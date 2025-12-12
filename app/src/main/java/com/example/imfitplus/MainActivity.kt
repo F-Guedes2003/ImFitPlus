@@ -20,5 +20,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FormActivity::class.java)
             startActivity(intent)
         }
+
+        amb.botaoHistorico.setOnClickListener {
+            val intent = Intent(this, HistoricoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
