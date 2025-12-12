@@ -1,20 +1,40 @@
-package com.example.imfitplus
+package com.example.imfitplus.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.imfitplus.adapter.PessoaAdapter
+import com.example.imfitplus.databinding.ActivityHistoricoBinding
+import com.example.imfitplus.entities.Pessoa
+import com.example.imfitplus.enums.NivelAtividade
+import com.example.imfitplus.enums.Sexo
 
 class HistoricoActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHistoricoBinding
+    private lateinit var lista: MutableList<Pessoa>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_historico)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        binding = ActivityHistoricoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        lista = carregarHistoricoFake()
+
+        val adapter = PessoaAdapter(this, lista)
+        binding.myListView.adapter = adapter
+    }
+
+    private fun carregarHistoricoFake(): MutableList<Pessoa> {
+        return mutableListOf(
+            Pessoa("Ronaldo", 40, Sexo.MASCULINO,
+                NivelAtividade.INTENSO,
+                1.85, 120.0, 30.0, 20.4, 2132.3, 22.0),
+
+            Pessoa("Zara Vitória", 30, Sexo.FEMININO,
+                NivelAtividade.MODERADO,
+                1.60, 65.0, 0.0, 0.0, 0.0, 0.0)
+        )
     }
 }
