@@ -41,6 +41,9 @@
     <string name="menu">Menu</string>
     <string name="visualizar_historico">Visualizar Histórico</string>
     <string name="historico_saude_toolbar">historico saude</string>
+    <string name="label_imc_tile">IMC:</string>
+    <string name="peso_ideal_label_tile">Peso Ideal:</string>
+    <string name="tmb_label_tile">TMB</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

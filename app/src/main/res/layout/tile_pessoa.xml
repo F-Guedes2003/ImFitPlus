@@ -25,14 +25,6 @@
             android:textSize="20sp"
             android:layout_height="wrap_content"
             android:text="5 anos"/>
-
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/sexo"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:layout_height="wrap_content"
-            android:text="Masculino"/>
     </LinearLayout>
 
     <LinearLayout
@@ -40,29 +32,55 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/peso"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="59kg"
-            android:textSize="24sp"
-            android:layout_weight="1"/>
-
-        <TextView
+            android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/altura"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:layout_height="wrap_content"
-            android:text="1.65"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/nivel_atividade"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
+            <TextView
+                android:id="@+id/imc_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_imc_tile"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/resultado_imc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sedentário"/>
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tmb_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tmb_label_tile"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tmb_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="59.5"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

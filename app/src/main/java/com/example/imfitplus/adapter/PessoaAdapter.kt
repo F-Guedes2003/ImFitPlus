@@ -37,10 +37,8 @@ class PessoaAdapter(
                 val tilePessoaViewHolder = TilePessoaViewHolder(
                     nameTv = name,
                     idadeTv = idade,
-                    sexoTv = sexo,
-                    pesoTv = peso,
-                    alturaTv = altura,
-                    nivelAtividadeTv = nivelAtividade
+                    imcTv = resultadoImc,
+                    tmbTv = tmbValue
                 )
 
                 pessoaTileView!!.tag = tilePessoaViewHolder
@@ -51,10 +49,8 @@ class PessoaAdapter(
 
         holder.nameTv.text = pessoa.nome
         holder.idadeTv.text = "${pessoa.idade} anos"
-        holder.sexoTv.text = pessoa.sexo.toString()
-        holder.pesoTv.text = "${pessoa.peso} kg"
-        holder.alturaTv.text = pessoa.altura.toString()
-        holder.nivelAtividadeTv.text = pessoa.nivelAtividade.toString()
+        holder.imcTv.text = "%.2f".format(pessoa.imc)
+        holder.tmbTv.text = "%.2f".format(pessoa.taxaMetabolica)
 
         return pessoaTileView!!
     }
@@ -62,9 +58,7 @@ class PessoaAdapter(
     private data class TilePessoaViewHolder(
         val nameTv: TextView,
         val idadeTv: TextView,
-        val sexoTv: TextView,
-        val pesoTv: TextView,
-        val alturaTv: TextView,
-        val nivelAtividadeTv: TextView
+        val imcTv: TextView,
+        val tmbTv: TextView
     )
 }
