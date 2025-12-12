@@ -1,4 +1,4 @@
-package com.example.imfitplus.ui
+package com.example.imfitplus
 
 import android.content.Intent
 import android.os.Bundle

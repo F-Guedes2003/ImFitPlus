@@ -10,10 +10,17 @@
     <Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/app_green">
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/peso_ideal_toolbar"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +29,7 @@
             android:textStyle="bold"
             android:textColor="#FFF"
             android:layout_gravity="center"
-            android:text="@string/peso_ideal_toolbar" />
+            android:text="@string/menu" />
 
     </Toolbar>
 
