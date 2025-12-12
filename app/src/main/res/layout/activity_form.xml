@@ -41,16 +41,45 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idade"
+            android:text="@string/data_de_nascimento"
             android:textColor="@color/app_green" />
-        <EditText
-            android:id="@+id/idade"
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="@string/digite_sua_idade"
-            android:textColor="@color/app_green"
-            app:hintTextColor="@color/app_green" />
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/dia"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/dia_nascimento"
+                android:textColor="@color/app_green"
+                app:hintTextColor="@color/app_green" />
+
+            <EditText
+                android:id="@+id/mes"
+                android:layout_weight="1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/mes_nascimento"
+                android:textColor="@color/app_green"
+                app:hintTextColor="@color/app_green" />
+
+            <EditText
+                android:id="@+id/ano"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/ano_nascimento"
+                android:textColor="@color/app_green"
+                app:hintTextColor="@color/app_green" />
+
+        </LinearLayout>
 
         <!-- Sexo -->
         <TextView

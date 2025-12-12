@@ -44,6 +44,10 @@
     <string name="label_imc_tile">IMC:</string>
     <string name="peso_ideal_label_tile">Peso Ideal:</string>
     <string name="tmb_label_tile">TMB</string>
+    <string name="dia_nascimento">dia</string>
+    <string name="mes_nascimento">mes nascimento</string>
+    <string name="ano_nascimento">ano nascimento</string>
+    <string name="data_de_nascimento">Data de Nascimento</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

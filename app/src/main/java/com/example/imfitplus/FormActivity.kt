@@ -12,6 +12,8 @@ import com.example.imfitplus.databinding.ActivityFormBinding
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
+import java.time.LocalDate
+import java.time.Period
 import kotlin.math.pow
 
 class FormActivity : AppCompatActivity() {
@@ -31,23 +33,39 @@ class FormActivity : AppCompatActivity() {
 
     private fun enviar() {
         val nome = afb.nome
-        val idade = afb.idade
         val altura = afb.altura
+        val diaNascimento = afb.dia
+        val mesNascimento = afb.mes
+        val anoNascimento = afb.ano
         val peso = afb.peso
 
-        limparErros(nome, idade, altura, peso)
+        limparErros(nome, altura, peso)
 
         if (!validarCampoObrigatorio(nome, "Nome")) return
-        if (!validarCampoObrigatorio(idade, "Idade")) return
+        if (!validarCampoObrigatorio(diaNascimento, "Dia de Nascimento")) return
+        if (!validarCampoObrigatorio(mesNascimento, "Mes de Nascimento")) return
+        if (!validarCampoObrigatorio(anoNascimento, "Ano de Nascimento")) return
         if (!validarCampoObrigatorio(altura, "Altura")) return
         if (!validarCampoObrigatorio(peso, "Peso")) return
 
-        val idadeInt = idade.text.toString().toIntOrNull()
+        val diaNascimentoInt = diaNascimento.text.toString().toIntOrNull()
+        val mesNascimentoInt = mesNascimento.text.toString().toIntOrNull()
+        val anoNascimentoInt = anoNascimento.text.toString().toIntOrNull()
         val alturaDouble = altura.text.toString().toDoubleOrNull()
         val pesoDouble = peso.text.toString().toDoubleOrNull()
 
-        if (idadeInt == null || idadeInt <= 0) {
-            exibirErro(idade, "Idade inválida")
+        if (diaNascimentoInt == null || diaNascimentoInt <= 0 || diaNascimentoInt > 31) {
+            exibirErro(diaNascimento, "Dia de nascimento inválido")
+            return
+        }
+
+        if (mesNascimentoInt == null || mesNascimentoInt <= 0 || mesNascimentoInt > 12) {
+            exibirErro(mesNascimento, "Mês de nascimento inválido")
+            return
+        }
+
+        if (anoNascimentoInt == null || anoNascimentoInt <= 0) {
+            exibirErro(anoNascimento, "Ano de nascimento inválido")
             return
         }
 
@@ -73,14 +91,16 @@ class FormActivity : AppCompatActivity() {
             return
         }
 
+        val dataNascimento = LocalDate.of(anoNascimentoInt, mesNascimentoInt, diaNascimentoInt)
+        val dataStr = dataNascimento.toString()
+        val idade = calculaIdade(dataNascimento)
         val imc = calculaImc(pesoDouble, alturaDouble)
-        val taxaMetabolica = calculaTmb(sexo, alturaDouble, pesoDouble, idadeInt)
+        val taxaMetabolica = calculaTmb(sexo, alturaDouble, pesoDouble, idade)
         val gastoDiario = taxaMetabolica * fatorAtividade(nivelAtividade)
         val pesoIdeal = calculaPesoIdeal(alturaDouble)
-
         val pessoa = Pessoa(
             nome.text.toString(),
-            idadeInt,
+            idade,
             sexo,
             nivelAtividade,
             alturaDouble,
@@ -92,8 +112,7 @@ class FormActivity : AppCompatActivity() {
             null
         )
 
-        var retorno = formController.create(pessoa)
-        println(retorno)
+        formController.create(pessoa)
 
         val intent = Intent(this, ImcActivity::class.java).apply {
             putExtra("Pessoa", pessoa)
@@ -162,5 +181,10 @@ class FormActivity : AppCompatActivity() {
 
     private fun calculaPesoIdeal(altura: Double): Double {
         return 22 * altura.pow(2)
+    }
+
+    private fun calculaIdade(birthDate: LocalDate): Int {
+        val currentDate = LocalDate.now()
+        return Period.between(birthDate, currentDate).years
     }
 }
