@@ -40,6 +40,7 @@
     <string name="botao_historico_menu">Histórico</string>
     <string name="menu">Menu</string>
     <string name="visualizar_historico">Visualizar Histórico</string>
+    <string name="historico_saude_toolbar">historico saude</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
