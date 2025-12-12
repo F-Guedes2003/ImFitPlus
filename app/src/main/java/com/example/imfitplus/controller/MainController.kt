@@ -9,6 +9,6 @@ import com.example.imfitplus.entities.PessoaSQLite
 class MainController(historicoActivity: HistoricoActivity) {
     private var pessoaDao: PessoaDAO = PessoaSQLite(historicoActivity)
 
-    fun getAllDados(dado: Pessoa) = pessoaDao.getAllDados()
+    fun getAllDados(): MutableList<Pessoa> = pessoaDao.getAllDados()
 
 }

@@ -3,6 +3,7 @@ package com.example.imfitplus
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imfitplus.adapter.PessoaAdapter
+import com.example.imfitplus.controller.MainController
 import com.example.imfitplus.databinding.ActivityHistoricoBinding
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
@@ -11,6 +12,11 @@ import com.example.imfitplus.enums.Sexo
 class HistoricoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHistoricoBinding
+
+    private val pessoaController: MainController by lazy {
+        MainController(this)
+    }
+
     private lateinit var lista: MutableList<Pessoa>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +25,7 @@ class HistoricoActivity : AppCompatActivity() {
         binding = ActivityHistoricoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lista = carregarHistoricoFake()
+        lista = pessoaController.getAllDados()
 
         val adapter = PessoaAdapter(this, lista)
         binding.myListView.adapter = adapter

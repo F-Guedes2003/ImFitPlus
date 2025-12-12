@@ -73,7 +73,7 @@ class PessoaSQLite(context: Context): PessoaDAO {
     )
 
 
-    override fun getAllDados(): List<Pessoa> {
+    override fun getAllDados(): MutableList<Pessoa> {
         var pessoaList: MutableList<Pessoa> = mutableListOf();
         var cursor = database.rawQuery("SELECT * FROM $DADOS_SAUDE_TABLE", null)
         while(cursor.moveToNext()) {
