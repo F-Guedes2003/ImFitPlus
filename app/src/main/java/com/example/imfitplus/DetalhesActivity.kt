@@ -19,5 +19,6 @@ class DetalhesActivity : AppCompatActivity() {
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
         adb.nome.text = pessoa!!.nome
         adb.id.text = pessoa.id.toString()
+        adb.dataNasc.text = pessoa.dataNascimento.toString()
     }
 }

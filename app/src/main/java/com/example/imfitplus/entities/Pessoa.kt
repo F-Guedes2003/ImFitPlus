@@ -8,6 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Pessoa(
     val nome: String,
+    val dataNascimento: String? = "",
+    val frequenciaMaxima: Int? = 120,
     val idade: Int,
     val sexo: Sexo,
     val nivelAtividade: NivelAtividade,

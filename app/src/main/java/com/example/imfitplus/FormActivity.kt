@@ -92,14 +92,17 @@ class FormActivity : AppCompatActivity() {
         }
 
         val dataNascimento = LocalDate.of(anoNascimentoInt, mesNascimentoInt, diaNascimentoInt)
-        val dataStr = dataNascimento.toString()
         val idade = calculaIdade(dataNascimento)
         val imc = calculaImc(pesoDouble, alturaDouble)
         val taxaMetabolica = calculaTmb(sexo, alturaDouble, pesoDouble, idade)
         val gastoDiario = taxaMetabolica * fatorAtividade(nivelAtividade)
         val pesoIdeal = calculaPesoIdeal(alturaDouble)
+        val frequenciaMaxima = 220 - idade
+
         val pessoa = Pessoa(
             nome.text.toString(),
+            dataNascimento.toString(),
+            frequenciaMaxima,
             idade,
             sexo,
             nivelAtividade,

@@ -17,6 +17,10 @@ class PessoaSQLite(context: Context): PessoaDAO {
 
         private val ID_COLUMN = "id"
 
+        private val DATA_NASC_COLUMN = "data_nasc"
+
+        private val FREQUENCIA_MAX_COLUMN = "frequencia_max"
+
         private val NOME_COLUMN = "nome"
 
         private val IDADE_COLUMN  = "idade"
@@ -40,6 +44,8 @@ class PessoaSQLite(context: Context): PessoaDAO {
         private val CREATE_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $DADOS_SAUDE_TABLE (" +
                 "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "$NOME_COLUMN TEXT NOT NULL," +
+                "$DATA_NASC_COLUMN TEXT" +
+                "$FREQUENCIA_MAX_COLUMN INTEGER" +
                 "$IDADE_COLUMN INTEGER NOT NULL," +
                 "$PESO_COLUMN REAL NOT NULL," +
                 "$ALTURA_COLUMN REAL NOT NULL," +
@@ -100,6 +106,8 @@ class PessoaSQLite(context: Context): PessoaDAO {
 
     private fun Pessoa.toContentValues() = ContentValues().apply {
         put(NOME_COLUMN, nome)
+        put(DATA_NASC_COLUMN, dataNascimento)
+        put(FREQUENCIA_MAX_COLUMN, frequenciaMaxima)
         put(IDADE_COLUMN, idade)
         put(PESO_COLUMN, peso)
         put(ALTURA_COLUMN, altura)
@@ -111,19 +119,27 @@ class PessoaSQLite(context: Context): PessoaDAO {
         put(PESO_IDEAL_COLUMN, pesoIdeal)
     }
 
-    private fun Cursor.toPessoa() = Pessoa(
-        getString(getColumnIndexOrThrow(NOME_COLUMN)),
-        getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
-        selectSexo(),
-        selectNivelAtividade(),
-        getDouble(getColumnIndexOrThrow(ALTURA_COLUMN)),
-        getDouble(getColumnIndexOrThrow(PESO_COLUMN)),
-        getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
-        getDouble(getColumnIndexOrThrow(TMB_COLUMN)),
-        getDouble(getColumnIndexOrThrow(GASTO_DIARIO_COLUMN)),
-        getDouble(getColumnIndexOrThrow(PESO_IDEAL_COLUMN)),
-                getInt(getColumnIndexOrThrow(ID_COLUMN)),
-    )
+    private fun Cursor.toPessoa(): Pessoa {
+        val dataNasc = getColumnIndex(DATA_NASC_COLUMN)
+        val frequenciaMax = getColumnIndex(FREQUENCIA_MAX_COLUMN)
+
+        return Pessoa(
+            getString(getColumnIndexOrThrow(NOME_COLUMN)),
+            getString(dataNasc),
+            getInt(frequenciaMax),
+            getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
+            selectSexo(),
+            selectNivelAtividade(),
+            getDouble(getColumnIndexOrThrow(ALTURA_COLUMN)),
+            getDouble(getColumnIndexOrThrow(PESO_COLUMN)),
+            getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
+            getDouble(getColumnIndexOrThrow(TMB_COLUMN)),
+            getDouble(getColumnIndexOrThrow(GASTO_DIARIO_COLUMN)),
+            getDouble(getColumnIndexOrThrow(PESO_IDEAL_COLUMN)),
+            getInt(getColumnIndexOrThrow(ID_COLUMN)),
+        )
+    }
+
 
     private fun Cursor.selectSexo(): Sexo {
         val sexo = getString(getColumnIndexOrThrow(SEXO_COLUMN))

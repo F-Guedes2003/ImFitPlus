@@ -115,6 +115,121 @@
                 android:textSize="20sp"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/frequencia_maxima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/frequencia_maxima"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/frequencia_maxima_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/frequencia_leve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zona_leve"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/frequencia_leve_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/zn_queima_gordura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zona de queima de gordura"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zn_queima_gordura_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/zn_aerobica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zona_de_queima_de_gordura"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zn_aerobica_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/zn_anaerobica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zona de queima de gordura"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zn_anaerobica_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

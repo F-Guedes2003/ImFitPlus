@@ -20,11 +20,22 @@ class ResumoSaudeActivity : AppCompatActivity() {
         setContentView(arsb.root)
 
         inicializaBotaoMenu(arsb)
-
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
-        arsb.valorImc.text = "%.2f".format(pessoa!!.imc)
+
+        val frequenciaMaxima = pessoa!!.frequenciaMaxima
+
+        arsb.valorImc.text = "%.2f".format(pessoa.imc)
         arsb.valorPesoIdeal.text = "%.2f".format(pessoa.pesoIdeal)
         arsb.tmbValor.text = "%.2f".format(pessoa.taxaMetabolica)
+        arsb.frequenciaMaximaValor.text = pessoa.frequenciaMaxima.toString()
+        arsb.frequenciaLeveValor.text = calculaZona(frequenciaMaxima!!, 55).toString();
+        arsb.znQueimaGorduraValor.text = calculaZona(frequenciaMaxima, 65).toString()
+        arsb.znAerobicaValor.text = calculaZona(frequenciaMaxima, 75).toString()
+        arsb.znAnaerobicaValor.text = calculaZona(frequenciaMaxima, 85).toString()
+    }
+
+    private fun calculaZona(frequencia: Int, porcentagem: Int): Int {
+        return frequencia * porcentagem /100
     }
 
     private fun inicializaBotaoMenu(activity: ActivityResumoSaudeBinding) {

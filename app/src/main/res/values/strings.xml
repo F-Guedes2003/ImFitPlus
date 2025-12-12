@@ -48,6 +48,9 @@
     <string name="mes_nascimento">mes nascimento</string>
     <string name="ano_nascimento">ano nascimento</string>
     <string name="data_de_nascimento">Data de Nascimento</string>
+    <string name="frequencia_maxima">Frequencia Máxima:</string>
+    <string name="zona_de_queima_de_gordura">Zona de queima de gordura</string>
+    <string name="zona_leve">Zona Leve</string>
     <string-array name="niveis_atividade">
         <item>Sedentário</item>
         <item>Leve</item>
