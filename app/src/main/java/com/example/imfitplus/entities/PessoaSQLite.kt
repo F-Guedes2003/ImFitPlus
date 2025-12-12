@@ -119,14 +119,10 @@ class PessoaSQLite(context: Context): PessoaDAO {
         put(PESO_IDEAL_COLUMN, pesoIdeal)
     }
 
-    private fun Cursor.toPessoa(): Pessoa {
-        val dataNasc = getColumnIndex(DATA_NASC_COLUMN)
-        val frequenciaMax = getColumnIndex(FREQUENCIA_MAX_COLUMN)
-
-        return Pessoa(
+    private fun Cursor.toPessoa() = Pessoa(
             getString(getColumnIndexOrThrow(NOME_COLUMN)),
-            getString(dataNasc),
-            getInt(frequenciaMax),
+        getString(getColumnIndexOrThrow(DATA_NASC_COLUMN)),
+        getInt(getColumnIndexOrThrow(FREQUENCIA_MAX_COLUMN)),
             getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
             selectSexo(),
             selectNivelAtividade(),
@@ -138,7 +134,6 @@ class PessoaSQLite(context: Context): PessoaDAO {
             getDouble(getColumnIndexOrThrow(PESO_IDEAL_COLUMN)),
             getInt(getColumnIndexOrThrow(ID_COLUMN)),
         )
-    }
 
 
     private fun Cursor.selectSexo(): Sexo {
