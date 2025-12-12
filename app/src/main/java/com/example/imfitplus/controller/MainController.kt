@@ -1,13 +1,14 @@
 package com.example.imfitplus.controller
 
+import com.example.imfitplus.HistoricoActivity
 import com.example.imfitplus.MenuActivity
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.entities.PessoaDAO
 import com.example.imfitplus.entities.PessoaSQLite
 
-class MainController(menuActivity: MenuActivity) {
-    private var dadoSaudeDao: PessoaDAO = PessoaSQLite(menuActivity)
+class MainController(historicoActivity: HistoricoActivity) {
+    private var pessoaDao: PessoaDAO = PessoaSQLite(historicoActivity)
 
-    fun insertDado(dado: Pessoa) = dadoSaudeDao.create(dado)
+    fun getAllDados(dado: Pessoa) = pessoaDao.getAllDados()
 
 }

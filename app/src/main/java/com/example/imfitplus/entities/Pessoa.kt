@@ -16,5 +16,6 @@ data class Pessoa(
     var imc: Double,
     var taxaMetabolica: Double,
     var gastoDiario: Double,
-    var pesoIdeal: Double
+    var pesoIdeal: Double,
+    val id: Int?
     ): Parcelable

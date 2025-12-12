@@ -3,8 +3,10 @@ package com.example.imfitplus.entities
 import android.content.ContentValues
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.database.sqlite.SQLiteDatabase
+import android.database.Cursor
 import android.util.Log
+import com.example.imfitplus.enums.NivelAtividade
+import com.example.imfitplus.enums.Sexo
 import java.sql.SQLException
 import kotlin.apply
 
@@ -72,7 +74,13 @@ class PessoaSQLite(context: Context): PessoaDAO {
 
 
     override fun getAllDados(): List<Pessoa> {
-        TODO("Not yet implemented")
+        var pessoaList: MutableList<Pessoa> = mutableListOf();
+        var cursor = database.rawQuery("SELECT * FROM $DADOS_SAUDE_TABLE", null)
+        while(cursor.moveToNext()) {
+            pessoaList.add(cursor.toPessoa())
+        }
+
+        return pessoaList
     }
 
     private fun Pessoa.toContentValues() = ContentValues().apply {
@@ -87,4 +95,34 @@ class PessoaSQLite(context: Context): PessoaDAO {
         put(GASTO_DIARIO_COLUMN, gastoDiario)
         put(PESO_IDEAL_COLUMN, pesoIdeal)
     }
+
+    private fun Cursor.toPessoa() = Pessoa(
+        getString(getColumnIndexOrThrow(NOME_COLUMN)),
+        getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
+        selectSexo(),
+        selectNivelAtividade(),
+        getDouble(getColumnIndexOrThrow(ALTURA_COLUMN)),
+        getDouble(getColumnIndexOrThrow(PESO_COLUMN)),
+        getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
+        getDouble(getColumnIndexOrThrow(TMB_COLUMN)),
+        getDouble(getColumnIndexOrThrow(GASTO_DIARIO_COLUMN)),
+        getDouble(getColumnIndexOrThrow(PESO_IDEAL_COLUMN)),
+                getInt(getColumnIndexOrThrow(ID_COLUMN)),
+    )
+
+    private fun Cursor.selectSexo(): Sexo {
+        val sexo = getString(getColumnIndexOrThrow(SEXO_COLUMN))
+
+        return if (sexo == "MASCULINO") Sexo.MASCULINO else Sexo.FEMININO
+    }
+
+    private fun Cursor.selectNivelAtividade(): NivelAtividade {
+        return when (getString(getColumnIndexOrThrow(NIVEL_ATIVIDADE))) {
+            "SEDENTARIO" -> NivelAtividade.SEDENTARIO
+            "MODERADO" -> NivelAtividade.MODERADO
+            "INTENSO" -> NivelAtividade.INTENSO
+            else -> NivelAtividade.SEDENTARIO
+        }
+    }
+
 }
