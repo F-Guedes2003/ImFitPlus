@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imfitplus.databinding.ActivityGastoCaloricoBinding
+import com.example.imfitplus.databinding.ActivityPesoIdealBinding
 import com.example.imfitplus.entities.Pessoa
 import com.example.imfitplus.enums.NivelAtividade
 import com.example.imfitplus.enums.Sexo
@@ -18,6 +19,7 @@ class GastoCaloricoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         agcb = ActivityGastoCaloricoBinding.inflate(layoutInflater)
         setContentView(agcb.root)
+        inicializaBotaoMenu(agcb)
 
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
 
@@ -36,6 +38,13 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
         agcb.btnVoltarTmb.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun inicializaBotaoMenu(activity: ActivityGastoCaloricoBinding) {
+        activity.menuBtn.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

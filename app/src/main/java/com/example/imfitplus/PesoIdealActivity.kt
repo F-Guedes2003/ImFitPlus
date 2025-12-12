@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.imfitplus.databinding.ActivityImcBinding
 import com.example.imfitplus.databinding.ActivityPesoIdealBinding
 import com.example.imfitplus.entities.Pessoa
 import kotlin.math.abs
@@ -19,6 +20,8 @@ class PesoIdealActivity : AppCompatActivity() {
         pia = ActivityPesoIdealBinding.inflate(layoutInflater)
         setContentView(pia.root)
 
+        inicializaBotaoMenu(pia)
+
         val pessoa = intent.getParcelableExtra<Pessoa>("Pessoa")
         val pesoIdeal = pessoa!!.pesoIdeal
 
@@ -29,7 +32,14 @@ class PesoIdealActivity : AppCompatActivity() {
         pia.btnVoltar.setOnClickListener { finish() }
         pia.btnAvancarParaResumo.setOnClickListener {
             val intent = Intent(this, ResumoSaudeActivity::class.java)
-            intent.putExtra("pessoa", pessoa)
+            intent.putExtra("Pessoa", pessoa)
+            startActivity(intent)
+        }
+    }
+
+    private fun inicializaBotaoMenu(activity: ActivityPesoIdealBinding) {
+        activity.menuBtn.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
