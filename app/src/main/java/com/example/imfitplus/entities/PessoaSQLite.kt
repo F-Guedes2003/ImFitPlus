@@ -44,8 +44,8 @@ class PessoaSQLite(context: Context): PessoaDAO {
         private val CREATE_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $DADOS_SAUDE_TABLE (" +
                 "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "$NOME_COLUMN TEXT NOT NULL," +
-                "$DATA_NASC_COLUMN TEXT" +
-                "$FREQUENCIA_MAX_COLUMN INTEGER" +
+                "$DATA_NASC_COLUMN TEXT," +
+                "$FREQUENCIA_MAX_COLUMN INTEGER," +
                 "$IDADE_COLUMN INTEGER NOT NULL," +
                 "$PESO_COLUMN REAL NOT NULL," +
                 "$ALTURA_COLUMN REAL NOT NULL," +

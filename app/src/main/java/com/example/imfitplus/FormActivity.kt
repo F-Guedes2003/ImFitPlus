@@ -115,8 +115,9 @@ class FormActivity : AppCompatActivity() {
             null
         )
 
-        formController.create(pessoa)
+        val id = formController.create(pessoa)
 
+        println("id: " + id)
         val intent = Intent(this, ImcActivity::class.java).apply {
             putExtra("Pessoa", pessoa)
         }
